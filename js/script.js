@@ -1,34 +1,42 @@
-let currencyElement = document.querySelector(".js-currency")
-let formElement = document.querySelector(".js-form");
-let resultElement = document.querySelector(".js-result");
-let amountElement = document.querySelector(".js-amount")
+{
+    const currencyElement = document.querySelector(".js-currency")
+    const formElement = document.querySelector(".js-form");
+    const resultElement = document.querySelector(".js-result");
+    const amountElement = document.querySelector(".js-amount")
 
-let rateEUR = 4.31;
-let rateGPB = 5.05;
-let rateUSD = 3.97;
+    const calculateResult = (currency) => {
+        const rateEUR = 4.31;
+        const rateGPB = 5.05;
+        const rateUSD = 3.97;
 
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault(); // zapobiega wysłaniu formularza przy przeładowaniu się strony, czyli wysyła dopiero po wciśnięciu guzika
+        switch (currency) {
+            case "EUR":
+                result = amount / rateEUR;
+                break;
 
-    let amount = +amountElement.value;
-    let currency = currencyElement.value;
+            case "GPB":
+                result = amount / rateGPB;
+                break;
 
-    let result;
+            case "USD":
+                result = amount / rateUSD;
+                break;
+        }
+    }
 
-switch (currency) {
-    case "EUR":
-    result = amount / rateEUR;
-    break;
 
-    case "GPB":
-    result = amount / rateGPB;
-    break;
 
-    case "USD":
-    result = amount / rateUSD;
-    break;
+    formElement.addEventListener("submit", (event) => {
+        event.preventDefault(); // zapobiega wysłaniu formularza przy przeładowaniu się strony, czyli wysyła dopiero po wciśnięciu guzika
+
+        const amount = +amountElement.value;
+        const currency = currencyElement.value;
+
+        let result;
+
+
+
+
+        resultElement.innerHTML = `${amount.toFixed(2)} PLN = <strong> ${result.toFixed(2)} ${currency}</strong>`;
+    });
 }
-
-
-    resultElement.innerHTML = `${amount.toFixed(2)} PLN = <strong> ${result.toFixed(2)} ${currency}</strong>`;
-});
