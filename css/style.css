@@ -8,4 +8,6 @@ html {
 
 body {
     font-family: 'Raleway', sans-serif;
+    background-image: url(../images/tlo.jpg);
+    background-size: cover;
 }
